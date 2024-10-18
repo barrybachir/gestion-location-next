@@ -1,17 +1,29 @@
 <?php
 
+use App\Http\Controllers\orderController;
+use App\Livewire\vehicule\AvailableVehiculeList;
+use App\Livewire\vehicule\VehiculeForm;
+use App\Livewire\vehicule\VehiculeList;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/vehicule/create',  VehiculeForm::class)->name('vehicule.create');
+    Route::get('/vehicule/list',  VehiculeList::class)->name('vehicule.list');
+    Route::get('/vehicule/available',  AvailableVehiculeList::class)->name('vehicule.available.list');
+    Route::get('/order/list',  \App\Livewire\OrderList::class)->name('order.list');
+    Route::get('/vehicules/edit/{vehiculeId}', \App\Livewire\vehicule\EditVehicle::class)->name('vehicule.edit');
+    Route::get('/client/list',  \App\Livewire\client\ClientListe::class)->name('client.list');
+    Route::get('/client/{clientId}/commandes', \App\Livewire\client\ClientOrders::class)->name('client.commandes');
+    Route::get('/client/create',  \App\Livewire\client\ClientAdd::class)->name('client.create');
+    Route::get('/order/confirme/{id}',  [orderController::class, 'confirm'])->name('order.confirm');
+
 });

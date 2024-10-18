@@ -13,13 +13,13 @@ use Laravel\Jetstream\Jetstream;
 class CreateTeam implements CreatesTeams
 {
     /**
-     * Validate and create a new team for the given user.
+     * Validate and create.blade.php a new team for the given user.
      *
      * @param  array<string, string>  $input
      */
     public function create(User $user, array $input): Team
     {
-        Gate::forUser($user)->authorize('create', Jetstream::newTeamModel());
+        Gate::forUser($user)->authorize('create.blade.php', Jetstream::newTeamModel());
 
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],

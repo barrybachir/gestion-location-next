@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="fixed w-screen bg-white border-b border-gray-100 z-10">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Next Location') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -47,8 +47,8 @@
                                         {{ __('Team Settings') }}
                                     </x-dropdown-link>
 
-                                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                                        <x-dropdown-link href="{{ route('teams.create') }}">
+                                    @can('create.blade.php', Laravel\Jetstream\Jetstream::newTeamModel())
+                                        <x-dropdown-link href="{{ route('teams.create.blade.php') }}">
                                             {{ __('Create New Team') }}
                                         </x-dropdown-link>
                                     @endcan
@@ -194,8 +194,8 @@
                         {{ __('Team Settings') }}
                     </x-responsive-nav-link>
 
-                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                        <x-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
+                    @can('create.blade.php', Laravel\Jetstream\Jetstream::newTeamModel())
+                        <x-responsive-nav-link href="{{ route('teams.create.blade.php') }}" :active="request()->routeIs('teams.create.blade.php')">
                             {{ __('Create New Team') }}
                         </x-responsive-nav-link>
                     @endcan
