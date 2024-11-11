@@ -27,7 +27,7 @@ class TeamPolicy
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the user can create.blade.php models.
      */
     public function create(User $user): bool
     {
