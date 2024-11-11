@@ -4,6 +4,7 @@ use App\Http\Controllers\orderController;
 use App\Livewire\vehicule\AvailableVehiculeList;
 use App\Livewire\vehicule\VehiculeForm;
 use App\Livewire\vehicule\VehiculeList;
+use App\Livewire\vehicule\VehiculeMaintenance;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,5 +26,9 @@ Route::middleware([
     Route::get('/client/{clientId}/commandes', \App\Livewire\client\ClientOrders::class)->name('client.commandes');
     Route::get('/client/create',  \App\Livewire\client\ClientAdd::class)->name('client.create');
     Route::get('/order/confirme/{id}',  [orderController::class, 'confirm'])->name('order.confirm');
+    Route::get('/order/return/{id}',  [orderController::class, 'return'])->name('order.return');
+    Route::get('/vehicule/{vehiculeId}/maintenance', VehiculeMaintenance::class)->name('vehicule.maintenance');
+    Route::get('/chauffeur/create',  \App\Livewire\client\ChauffeurAdd::class)->name('chauffeur.create');
+    Route::get('/chauffeur/list',  \App\Livewire\client\ChauffeurListe::class)->name('chauffeur.list');
 
 });
